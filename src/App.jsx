@@ -118,8 +118,8 @@ function ProfilePhoto() {
   const [failed, setFailed] = useState(false)
 
   const frameStyle = {
-    width: 'clamp(210px, 32vw, 290px)',
-    height: 'clamp(210px, 32vw, 290px)',
+    width: 'clamp(180px, 52vw, 290px)',
+    height: 'clamp(180px, 52vw, 290px)',
     borderRadius: '50%',
     padding: '5px',
     background: C.amber,
@@ -203,9 +203,10 @@ function ProfilePhoto() {
 function SectionHeader({ children, color }) {
   return (
     <h2
+      className="section-title"
       style={{
         fontFamily: FONT_DISPLAY,
-        fontSize: 'clamp(2.5rem, 7vw, 3.75rem)',
+        fontSize: 'clamp(2rem, 7vw, 3.75rem)',
         fontWeight: 900,
         margin: '0 0 2.5rem',
         letterSpacing: '-0.03em',
@@ -251,12 +252,14 @@ function Button({ href, children, variant = 'primary', external, onDark }) {
       href={href}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
+      className="btn"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '0.5rem',
         padding: '0.85rem 1.75rem',
+        minHeight: '48px',
         borderRadius: '9999px',
         fontWeight: 800,
         fontSize: '0.95rem',
@@ -288,6 +291,7 @@ function Button({ href, children, variant = 'primary', external, onDark }) {
 function ProjectCard({ project, index }) {
   return (
     <article
+      className="project-card"
       style={{
         background: C.white,
         borderRadius: '24px',
@@ -308,20 +312,12 @@ function ProjectCard({ project, index }) {
       }}
     >
       <div style={{ height: '5px', background: project.accent }} />
-      <div
-        style={{
-          padding: '2rem',
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-        }}
-      >
+      <div className="card-body" style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <h3
           style={{
             margin: 0,
             fontFamily: FONT_DISPLAY,
-            fontSize: '1.5rem',
+            fontSize: 'clamp(1.2rem, 4.5vw, 1.5rem)',
             fontWeight: 800,
             color: C.charcoal,
             lineHeight: 1.2,
@@ -361,57 +357,137 @@ function ProjectCard({ project, index }) {
 }
 
 function App() {
-  const containerStyle = {
-    maxWidth: '1100px',
-    margin: '0 auto',
-    padding: '0 1.5rem',
-  }
-
-  const sectionStyle = {
-    padding: '5.5rem 0',
-  }
-
   return (
     <>
       <style>{`
         *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; padding: 0; background: ${C.linen}; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+          margin: 0;
+          padding: 0;
+          background: ${C.linen};
+          overflow-x: hidden;
+        }
+        .page {
+          min-height: 100vh;
+          color: ${C.charcoal};
+          font-family: ${FONT_BOLD};
+          font-weight: 600;
+          line-height: 1.65;
+          overflow-x: hidden;
+        }
+        .container {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding-left: max(1.25rem, env(safe-area-inset-left));
+          padding-right: max(1.25rem, env(safe-area-inset-right));
+        }
+        .section { padding: 5.5rem 0; }
+        .hero-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 2.5rem 3rem;
+        }
+        .hero-copy { flex: 1 1 280px; min-width: 0; }
+        .hero-photo-wrap {
+          flex: 0 0 auto;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+        .hero-label { letter-spacing: 0.2em; }
+        .hero-name {
+          font-size: clamp(2.5rem, 10vw, 5.5rem);
+          line-height: 1;
+          word-break: break-word;
+        }
+        .hero-school {
+          font-size: clamp(1.15rem, 4.2vw, 1.75rem);
+          line-height: 1.25;
+        }
+        .hero-tagline {
+          font-size: clamp(1.15rem, 4vw, 1.85rem);
+          line-height: 1.3;
+        }
+        .btn-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+        }
+        .card-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+          gap: 2rem;
+        }
+        .footer-email {
+          word-break: break-word;
+          overflow-wrap: anywhere;
+          max-width: 100%;
+          padding: 0 0.5rem;
+        }
+        @media (max-width: 768px) {
+          .section { padding: 3.5rem 0; }
+          .section-title { margin-bottom: 1.75rem !important; }
+          .hero-row {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 2rem;
+            text-align: center;
+          }
+          .hero-copy { flex: 1 1 auto; width: 100%; }
+          .hero-label { letter-spacing: 0.14em; font-size: 0.9rem; }
+          .btn-group {
+            flex-direction: column;
+            width: 100%;
+          }
+          .btn-group .btn {
+            width: 100%;
+          }
+          .card-grid { gap: 1.25rem; }
+          .card-body { padding: 1.5rem !important; }
+          .skill-card { padding: 1.5rem !important; }
+        }
+        @media (max-width: 480px) {
+          .section { padding: 2.75rem 0; }
+          .container {
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+          }
+          .hero-name { font-size: clamp(2.15rem, 11vw, 3rem); }
+          .section-title {
+            font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .card-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          .card-body { padding: 1.25rem !important; }
+          .skill-card { padding: 1.25rem !important; }
+          footer.section { padding-bottom: max(2.5rem, env(safe-area-inset-bottom)) !important; }
+        }
       `}</style>
 
-      <div
-        style={{
-          minHeight: '100vh',
-          color: C.charcoal,
-          fontFamily: FONT_BOLD,
-          fontWeight: 600,
-          lineHeight: 1.65,
-        }}
-      >
+      <div className="page">
         <header
+          className="section"
           style={{
-            ...sectionStyle,
-            paddingTop: '5.5rem',
+            paddingTop: 'max(3.5rem, env(safe-area-inset-top))',
             paddingBottom: '4.5rem',
             background: C.linen,
           }}
         >
-          <div style={containerStyle}>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: '2.5rem 3rem',
-              }}
-            >
-              <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+          <div className="container">
+            <div className="hero-row">
+              <div className="hero-copy">
                 <p
+                  className="hero-label"
                   style={{
                     margin: '0 0 1.25rem',
                     fontFamily: FONT_BOLD,
                     fontSize: '1rem',
                     fontWeight: 800,
-                    letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     color: C.amberDark,
                   }}
@@ -419,23 +495,22 @@ function App() {
                   Portfolio
                 </p>
                 <h1
+                  className="hero-name"
                   style={{
                     margin: '0 0 1rem',
                     fontFamily: FONT_DISPLAY,
-                    fontSize: 'clamp(3.25rem, 11vw, 5.5rem)',
                     fontWeight: 900,
                     letterSpacing: '-0.04em',
-                    lineHeight: 0.95,
                     color: C.charcoal,
                   }}
                 >
                   Moosa Irfaan
                 </h1>
                 <p
+                  className="hero-school"
                   style={{
                     margin: '0 0 0.75rem',
                     fontFamily: FONT_DISPLAY,
-                    fontSize: 'clamp(1.35rem, 3.5vw, 1.75rem)',
                     fontWeight: 800,
                     fontStyle: 'italic',
                     letterSpacing: '-0.02em',
@@ -448,19 +523,20 @@ function App() {
                   style={{
                     margin: '0 0 1.75rem',
                     fontFamily: FONT_BOLD,
-                    fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
+                    fontSize: 'clamp(0.9rem, 3.5vw, 1.1rem)',
                     color: MUTED,
                     fontWeight: 600,
+                    lineHeight: 1.5,
                   }}
                 >
                   B.S. Computer Science + Mathematics @ St. Joseph&apos;s
                   University · GPA 3.7
                 </p>
                 <p
+                  className="hero-tagline"
                   style={{
-                    margin: '0 0 2.25rem',
+                    margin: '0 0 2rem',
                     fontFamily: FONT_BOLD,
-                    fontSize: 'clamp(1.35rem, 3.5vw, 1.85rem)',
                     fontWeight: 800,
                     letterSpacing: '-0.01em',
                     color: C.amberDark,
@@ -468,7 +544,7 @@ function App() {
                 >
                   Building things that ship.
                 </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                <div className="btn-group">
                   <Button href={LINKS.github} variant="primary" external>
                     GitHub
                   </Button>
@@ -477,27 +553,21 @@ function App() {
                   </Button>
                 </div>
               </div>
-              <ProfilePhoto />
+              <div className="hero-photo-wrap">
+                <ProfilePhoto />
+              </div>
             </div>
           </div>
         </header>
 
         <section
           id="projects"
-          style={{
-            ...sectionStyle,
-            background: C.stone,
-          }}
+          className="section"
+          style={{ background: C.stone }}
         >
-          <div style={containerStyle}>
+          <div className="container">
             <SectionHeader color={C.charcoal}>Projects</SectionHeader>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-                gap: '2rem',
-              }}
-            >
+            <div className="card-grid">
               {PROJECTS.map((project, i) => (
                 <ProjectCard key={project.title} project={project} index={i} />
               ))}
@@ -505,25 +575,14 @@ function App() {
           </div>
         </section>
 
-        <section
-          id="skills"
-          style={{
-            ...sectionStyle,
-            background: C.glow,
-          }}
-        >
-          <div style={containerStyle}>
+        <section id="skills" className="section" style={{ background: C.glow }}>
+          <div className="container">
             <SectionHeader color={C.charcoal}>Skills</SectionHeader>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                gap: '2rem',
-              }}
-            >
+            <div className="card-grid">
               {SKILLS.map((category) => (
                 <div
                   key={category.label}
+                  className="skill-card"
                   style={{
                     background: C.linen,
                     borderRadius: '24px',
@@ -556,14 +615,16 @@ function App() {
         </section>
 
         <footer
+          className="section"
           style={{
-            padding: '4rem 0 4.5rem',
+            paddingTop: '4rem',
+            paddingBottom: 'max(4.5rem, env(safe-area-inset-bottom))',
             background: C.slate,
           }}
         >
           <div
+            className="container"
             style={{
-              ...containerStyle,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -584,11 +645,12 @@ function App() {
               Let&apos;s build something together.
             </p>
             <a
+              className="footer-email"
               href={`mailto:${LINKS.email}`}
               style={{
                 fontFamily: FONT_BOLD,
                 color: C.amber,
-                fontSize: '1.1rem',
+                fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)',
                 fontWeight: 800,
                 letterSpacing: '0.02em',
                 textDecoration: 'none',
@@ -602,14 +664,7 @@ function App() {
             >
               {LINKS.email}
             </a>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '1rem',
-                justifyContent: 'center',
-              }}
-            >
+            <div className="btn-group" style={{ justifyContent: 'center', width: '100%', maxWidth: '320px' }}>
               <Button href={LINKS.github} variant="secondary" external onDark>
                 GitHub
               </Button>
