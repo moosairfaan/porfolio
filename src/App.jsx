@@ -118,8 +118,8 @@ function ProfilePhoto() {
   const [failed, setFailed] = useState(false)
 
   const frameStyle = {
-    width: 'clamp(180px, 52vw, 290px)',
-    height: 'clamp(180px, 52vw, 290px)',
+    width: 'clamp(200px, 28vw, 280px)',
+    height: 'clamp(200px, 28vw, 280px)',
     borderRadius: '50%',
     padding: '5px',
     background: C.amber,
@@ -385,57 +385,114 @@ function App() {
         .section { padding: 5.5rem 0; }
         .hero-row {
           display: flex;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           align-items: center;
-          gap: 2.5rem 3rem;
+          justify-content: space-between;
+          gap: 3rem;
         }
-        .hero-copy { flex: 1 1 280px; min-width: 0; }
+        .hero-copy {
+          flex: 1 1 auto;
+          min-width: 0;
+          max-width: 640px;
+        }
         .hero-photo-wrap {
           flex: 0 0 auto;
           display: flex;
-          justify-content: center;
-          width: 100%;
+          justify-content: flex-end;
+          align-items: center;
         }
         .hero-label { letter-spacing: 0.2em; }
         .hero-name {
-          font-size: clamp(2.5rem, 10vw, 5.5rem);
-          line-height: 1;
-          word-break: break-word;
+          font-size: clamp(2.75rem, 5vw, 5rem);
+          line-height: 1.02;
         }
         .hero-school {
-          font-size: clamp(1.15rem, 4.2vw, 1.75rem);
-          line-height: 1.25;
+          font-size: clamp(1.25rem, 2vw, 1.75rem);
+          line-height: 1.3;
         }
         .hero-tagline {
-          font-size: clamp(1.15rem, 4vw, 1.85rem);
-          line-height: 1.3;
+          font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+          line-height: 1.35;
         }
         .btn-group {
           display: flex;
           flex-wrap: wrap;
           gap: 0.75rem;
         }
+        .footer-btns {
+          justify-content: center;
+        }
         .card-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
+          align-items: stretch;
+        }
+        .project-card,
+        .skill-card {
+          height: 100%;
+        }
+        @media (min-width: 769px) {
+          .hero-section {
+            padding-top: 5.5rem !important;
+          }
         }
         .footer-email {
           word-break: break-word;
           overflow-wrap: anywhere;
           max-width: 100%;
-          padding: 0 0.5rem;
+        }
+        @media (max-width: 1024px) {
+          .hero-row {
+            gap: 2rem;
+          }
+          .card-grid {
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+          }
+        }
+        @media (max-width: 900px) {
+          .hero-row {
+            flex-wrap: wrap;
+          }
+          .hero-photo-wrap {
+            justify-content: center;
+          }
         }
         @media (max-width: 768px) {
           .section { padding: 3.5rem 0; }
           .section-title { margin-bottom: 1.75rem !important; }
           .hero-row {
             flex-direction: column-reverse;
+            flex-wrap: wrap;
             align-items: center;
             gap: 2rem;
             text-align: center;
           }
-          .hero-copy { flex: 1 1 auto; width: 100%; }
+          .hero-copy {
+            flex: 1 1 auto;
+            width: 100%;
+            max-width: none;
+          }
+          .hero-photo-wrap {
+            width: 100%;
+            justify-content: center;
+          }
+          .hero-name {
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
+            line-height: 1.05;
+            word-break: break-word;
+          }
+          .hero-school {
+            font-size: clamp(1.15rem, 4.2vw, 1.5rem);
+          }
+          .hero-tagline {
+            font-size: clamp(1.15rem, 4vw, 1.5rem);
+          }
+          .footer-btns {
+            width: 100%;
+            max-width: 320px;
+          }
+          .footer-email { padding: 0 0.5rem; }
           .hero-label { letter-spacing: 0.14em; font-size: 0.9rem; }
           .btn-group {
             flex-direction: column;
@@ -471,7 +528,7 @@ function App() {
 
       <div className="page">
         <header
-          className="section"
+          className="section hero-section"
           style={{
             paddingTop: 'max(3.5rem, env(safe-area-inset-top))',
             paddingBottom: '4.5rem',
@@ -664,7 +721,7 @@ function App() {
             >
               {LINKS.email}
             </a>
-            <div className="btn-group" style={{ justifyContent: 'center', width: '100%', maxWidth: '320px' }}>
+            <div className="btn-group footer-btns">
               <Button href={LINKS.github} variant="secondary" external onDark>
                 GitHub
               </Button>
