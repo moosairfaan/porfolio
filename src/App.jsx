@@ -438,9 +438,9 @@ function App() {
           }
         }
         .footer-email {
-          word-break: break-word;
-          overflow-wrap: anywhere;
+          display: inline-block;
           max-width: 100%;
+          padding: 0 0.25rem;
         }
         @media (max-width: 1024px) {
           .hero-row {
@@ -492,7 +492,12 @@ function App() {
             width: 100%;
             max-width: 320px;
           }
-          .footer-email { padding: 0 0.5rem; }
+          .footer-email {
+            font-size: 0.82rem !important;
+            letter-spacing: 0 !important;
+            white-space: nowrap;
+            padding: 0 1.25rem;
+          }
           .hero-label { letter-spacing: 0.14em; font-size: 0.9rem; }
           .btn-group {
             flex-direction: column;
@@ -523,6 +528,7 @@ function App() {
           .card-body { padding: 1.25rem !important; }
           .skill-card { padding: 1.25rem !important; }
           footer.section { padding-bottom: max(2.5rem, env(safe-area-inset-bottom)) !important; }
+          .footer-email { font-size: 0.76rem !important; }
         }
       `}</style>
 
@@ -707,9 +713,9 @@ function App() {
               style={{
                 fontFamily: FONT_BOLD,
                 color: C.amber,
-                fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)',
+                fontSize: '1.05rem',
                 fontWeight: 800,
-                letterSpacing: '0.02em',
+                letterSpacing: '0.01em',
                 textDecoration: 'none',
               }}
               onMouseEnter={(e) => {
