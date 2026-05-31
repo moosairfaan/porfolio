@@ -244,9 +244,10 @@ function TechTag({ label, colorIndex }) {
 }
 
 function Button({ href, children, variant = 'primary', external, onDark }) {
+  const isWine = variant === 'wine'
   const isPrimary = variant === 'primary'
-  const bg = isPrimary ? C.amberDark : onDark ? C.amber : C.white
-  const color = isPrimary ? C.white : C.charcoal
+  const bg = isWine ? C.wine : isPrimary ? C.amberDark : onDark ? C.amber : C.white
+  const color = isWine || isPrimary ? C.white : C.charcoal
 
   return (
     <a
@@ -615,7 +616,7 @@ function App() {
                   <Button href={LINKS.linkedin} variant="secondary" external>
                     LinkedIn
                   </Button>
-                  <Button href={LINKS.resume} variant="secondary" external>
+                  <Button href={LINKS.resume} variant="wine" external>
                     Resume
                   </Button>
                 </div>
@@ -738,7 +739,7 @@ function App() {
               <Button href={LINKS.linkedin} variant="primary" external onDark>
                 LinkedIn
               </Button>
-              <Button href={LINKS.resume} variant="secondary" external onDark>
+              <Button href={LINKS.resume} variant="wine" external onDark>
                 Resume
               </Button>
             </div>
