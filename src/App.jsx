@@ -106,6 +106,7 @@ const LINKS = {
   github: 'https://github.com/moosairfaan',
   linkedin: 'https://www.linkedin.com/in/moosa-irfaan',
   email: 'moosairfaan0325@outlook.com',
+  resume: '/resume.pdf',
 }
 
 function tagTextColor(bg) {
@@ -288,6 +289,67 @@ function Button({ href, children, variant = 'primary', external, onDark }) {
   )
 }
 
+function ResumeButton({ onDark }) {
+  const bg = onDark ? C.glow : C.wine
+  const color = onDark ? C.charcoal : C.white
+  const border = onDark ? C.amber : C.amber
+
+  return (
+    <a
+      href={LINKS.resume}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn resume-btn"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.45rem',
+        padding: '0.85rem 1.65rem',
+        minHeight: '48px',
+        borderRadius: '9999px',
+        fontFamily: FONT_BOLD,
+        fontWeight: 800,
+        fontSize: '0.95rem',
+        letterSpacing: '0.03em',
+        textDecoration: 'none',
+        color,
+        background: bg,
+        border: `2px solid ${border}`,
+        boxShadow: onDark ? 'none' : `0 8px 28px ${C.wine}33`,
+        cursor: 'pointer',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-3px) rotate(-1deg)'
+        if (!onDark) e.currentTarget.style.boxShadow = `0 12px 32px ${C.wine}44`
+        if (onDark) e.currentTarget.style.background = C.amber
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0) rotate(0deg)'
+        if (!onDark) e.currentTarget.style.boxShadow = `0 8px 28px ${C.wine}33`
+        if (onDark) e.currentTarget.style.background = C.glow
+      }}
+    >
+      <span aria-hidden style={{ color: onDark ? C.wine : C.amber, fontSize: '0.85rem' }}>
+        ✦
+      </span>
+      <span style={{ textTransform: 'uppercase' }}>My</span>
+      <span
+        style={{
+          fontFamily: FONT_DISPLAY,
+          fontStyle: 'italic',
+          fontWeight: 800,
+          textTransform: 'none',
+          letterSpacing: '-0.02em',
+        }}
+      >
+        Résumé
+      </span>
+    </a>
+  )
+}
+
 function ProjectCard({ project, index }) {
   return (
     <article
@@ -422,6 +484,7 @@ function App() {
         .footer-btns {
           justify-content: center;
         }
+        .resume-btn span { line-height: 1; }
         .card-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -614,6 +677,7 @@ function App() {
                   <Button href={LINKS.linkedin} variant="secondary" external>
                     LinkedIn
                   </Button>
+                  <ResumeButton />
                 </div>
               </div>
               <div className="hero-photo-wrap">
@@ -734,6 +798,7 @@ function App() {
               <Button href={LINKS.linkedin} variant="primary" external onDark>
                 LinkedIn
               </Button>
+              <ResumeButton onDark />
             </div>
             <p
               style={{
