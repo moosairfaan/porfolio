@@ -34,6 +34,14 @@ const PROFILE_SCALE = 1.2
 
 const PROJECTS = [
   {
+    title: 'ContextBridge — Cross-Platform AI Context Manager',
+    tech: ['React', 'TypeScript', 'Chrome Extension', 'Manifest V3'],
+    description:
+      'A Chrome extension that enables seamless AI context portability across ChatGPT, Claude, and Gemini. Built with per-platform DOM adapters, MutationObserver event handling, WeakSet-based deduplication, client-side NLP compression, and adaptive selector logic. Published on the Chrome Web Store.',
+    liveUrl: 'https://chromewebstore.google.com/',
+    accent: C.wine,
+  },
+  {
     title: 'EDGAR Financial Dashboard',
     tech: ['Python', 'FastAPI', 'SQLite', 'React', 'XBRL'],
     description:
