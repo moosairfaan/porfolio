@@ -34,11 +34,11 @@ const PROFILE_SCALE = 1.2
 
 const PROJECTS = [
   {
-    title: 'ContextBridge — Cross-Platform AI Context Manager',
-    tech: ['React', 'TypeScript', 'Chrome Extension', 'Manifest V3'],
+    title: 'ContextBridge',
+    tech: ['Vanilla JS', 'Chrome Bookmarklet', 'HTML'],
     description:
-      'A Chrome extension that enables seamless AI context portability across ChatGPT, Claude, and Gemini. Built with per-platform DOM adapters, MutationObserver event handling, WeakSet-based deduplication, client-side NLP compression, and adaptive selector logic. Published on the Chrome Web Store.',
-    liveUrl: 'https://chromewebstore.google.com/',
+      'A bookmarklet that captures your ChatGPT conversation, formats a handoff summary, and copies it to your clipboard so you can paste it into Claude and pick up exactly where you left off.',
+    liveUrl: '/projects/contextbridge',
     accent: C.wine,
   },
   {
@@ -254,14 +254,15 @@ function TechTag({ label, colorIndex }) {
 function Button({ href, children, variant = 'primary', external, onDark }) {
   const isWine = variant === 'wine'
   const isPrimary = variant === 'primary'
+  const isInternal = href.startsWith('/')
   const bg = isWine ? C.wine : isPrimary ? C.amberDark : onDark ? C.amber : C.white
   const color = isWine || isPrimary ? C.white : C.charcoal
 
   return (
     <a
       href={href}
-      target={external ? '_blank' : undefined}
-      rel={external ? 'noopener noreferrer' : undefined}
+      target={external && !isInternal ? '_blank' : undefined}
+      rel={external && !isInternal ? 'noopener noreferrer' : undefined}
       className="btn"
       style={{
         display: 'inline-flex',
