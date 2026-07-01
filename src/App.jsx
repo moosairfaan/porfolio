@@ -42,6 +42,14 @@ const PROJECTS = [
     accent: C.wine,
   },
   {
+    title: 'Ledger — Crypto Trading Simulator',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Canvas'],
+    description:
+      'A solo crypto research and trading simulator. Start with $10,000 in fake USD, research 9 fictional cryptocurrencies, buy and sell across a 10-minute season, and try to grow your portfolio as news events move prices — red flags like low liquidity and anonymous teams predict bigger crashes.',
+    liveUrl: 'https://moosairfaan.github.io/ledger/',
+    accent: C.amber,
+  },
+  {
     title: 'EDGAR Financial Dashboard',
     tech: ['Python', 'FastAPI', 'SQLite', 'React', 'XBRL'],
     description:
