@@ -19,20 +19,20 @@ const FONT_DISPLAY = "'Fraunces', Georgia, serif"
 const FONT_BOLD = "'Syne', system-ui, sans-serif"
 const MUTED = '#6E6A65'
 
+const LIVE = 'https://context-bridge-wine.vercel.app'
+const BOOKMARKLET = 'https://context-bridge-wine.vercel.app/bookmarklet'
 const GITHUB = 'https://github.com/moosairfaan/ContextBridge'
-const FORMATTER = 'https://github.com/moosairfaan/ContextBridge/blob/main/index.html'
 
 function Button({ href, children, variant = 'primary', external }) {
   const isPrimary = variant === 'primary'
-  const isInternal = href.startsWith('/')
   const bg = isPrimary ? C.amberDark : C.white
   const color = isPrimary ? C.white : C.charcoal
 
   return (
     <a
       href={href}
-      target={external && !isInternal ? '_blank' : undefined}
-      rel={external && !isInternal ? 'noopener noreferrer' : undefined}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
       className="btn"
       style={{
         display: 'inline-flex',
@@ -154,7 +154,7 @@ export default function ContextBridgePage() {
                 boxShadow: SOFT_SHADOW,
               }}
             >
-              <div style={{ height: '5px', background: C.wine }} />
+              <div style={{ height: '5px', background: C.navy }} />
               <div style={{ padding: '2rem' }}>
                 <h1
                   style={{
@@ -179,9 +179,10 @@ export default function ContextBridgePage() {
                     lineHeight: 1.7,
                   }}
                 >
-                  A bookmarklet that captures your ChatGPT conversation, formats a
-                  handoff summary, and copies it to your clipboard so you can paste
-                  it into Claude and pick up exactly where you left off.
+                  Carry a conversation from one AI chat to another. Paste a
+                  transcript (or grab it with a bookmarklet), get a compact
+                  handoff summary, then continue in Claude — or any other chat.
+                  Works with ChatGPT, Claude, Gemini, and Perplexity.
                 </p>
 
                 <h2
@@ -193,7 +194,7 @@ export default function ContextBridgePage() {
                     color: C.wine,
                   }}
                 >
-                  Install the bookmarklet
+                  Manual paste
                 </h2>
                 <ol
                   style={{
@@ -203,24 +204,23 @@ export default function ContextBridgePage() {
                   }}
                 >
                   <Step number={1}>
-                    Open{' '}
+                    Open the{' '}
                     <a
-                      href={`${GITHUB}/blob/main/bookmarklet.txt`}
+                      href={LIVE}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: C.amberDark, fontWeight: 800 }}
                     >
-                      bookmarklet.txt
+                      live app
                     </a>{' '}
-                    on GitHub and copy the <code>javascript:</code> URL.
+                    and paste a conversation.
                   </Step>
                   <Step number={2}>
-                    Create a new browser bookmark and paste that URL as the address.
-                    Name it ContextBridge.
+                    Pick a platform (or leave Auto), then click Format for Claude.
                   </Step>
                   <Step number={3}>
-                    Open a ChatGPT conversation, click the bookmark, then paste the
-                    copied summary into Claude.
+                    Copy the summary — or Open in Claude to copy and jump to a
+                    new chat.
                   </Step>
                 </ol>
 
@@ -233,30 +233,46 @@ export default function ContextBridgePage() {
                     color: C.charcoal,
                   }}
                 >
-                  How it works
+                  Bookmarklet
                 </h2>
-                <p
+                <ol
                   style={{
                     margin: '0 0 2rem',
-                    fontFamily: FONT_BOLD,
-                    fontWeight: 600,
-                    color: MUTED,
-                    fontSize: '1rem',
-                    lineHeight: 1.7,
+                    paddingLeft: '1.25rem',
+                    listStyle: 'none',
                   }}
                 >
-                  ContextBridge reads your ChatGPT thread, splits it into turns,
-                  pulls out the main topic and your last question, and formats a
-                  short summary Claude can continue from — no retyping, no lost
-                  context.
-                </p>
+                  <Step number={1}>
+                    Open the{' '}
+                    <a
+                      href={BOOKMARKLET}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: C.amberDark, fontWeight: 800 }}
+                    >
+                      bookmarklet page
+                    </a>{' '}
+                    and drag ContextBridge to your bookmarks bar.
+                  </Step>
+                  <Step number={2}>
+                    On ChatGPT, Claude, Gemini, or Perplexity, click the
+                    bookmark — a toast confirms the summary was copied.
+                  </Step>
+                  <Step number={3}>
+                    Paste into the next chat and keep going. No network calls;
+                    the bookmarklet is self-contained.
+                  </Step>
+                </ol>
 
                 <div className="btn-group">
-                  <Button href={GITHUB} variant="primary" external>
-                    GitHub
+                  <Button href={LIVE} variant="primary" external>
+                    Open App
                   </Button>
-                  <Button href={FORMATTER} variant="secondary" external>
-                    Open Formatter
+                  <Button href={BOOKMARKLET} variant="secondary" external>
+                    Bookmarklet
+                  </Button>
+                  <Button href={GITHUB} variant="secondary" external>
+                    GitHub
                   </Button>
                 </div>
               </div>

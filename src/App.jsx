@@ -51,9 +51,9 @@ const PROJECTS = [
   },
   {
     title: 'ContextBridge',
-    tech: ['Vanilla JS', 'Chrome Bookmarklet', 'HTML'],
+    tech: ['React', 'Vite', 'TypeScript', 'Bookmarklet'],
     description:
-      'A bookmarklet that captures your ChatGPT conversation, formats a handoff summary, and copies it to your clipboard so you can paste it into Claude and pick up exactly where you left off.',
+      'Carry a conversation from one AI chat to another. Paste a transcript (or grab it with a bookmarklet), get a compact handoff summary, then continue in Claude — or any other chat. Supports ChatGPT, Claude, Gemini, and Perplexity.',
     liveUrl: 'https://context-bridge-wine.vercel.app',
     accent: C.navy,
   },
