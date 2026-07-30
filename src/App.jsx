@@ -34,12 +34,28 @@ const PROFILE_SCALE = 1.2
 
 const PROJECTS = [
   {
+    title: 'Autocutter',
+    tech: ['Python', 'FastAPI', 'React', 'Whisper', 'Claude'],
+    description:
+      'AI video editor that turns long-form footage into a rough cut. Whisper transcription + Claude scoring pick the best segments for your target length; export FCPXML for Final Cut Pro X or a finished MP4 from the local React timeline editor — all runs on your machine.',
+    liveUrl: 'https://github.com/moosairfaan/autocutter',
+    accent: C.wine,
+  },
+  {
+    title: 'PosePulse — MoggingML',
+    tech: ['Python', 'MediaPipe', 'OpenCV', 'PyObjC'],
+    description:
+      'macOS computer-vision toy that watches Photo Booth: when you look at the camera it loops a song and flashes floating hype text; look away and it stops. MediaPipe Face Landmarker for gaze, pygame audio, and a ⌘⇧M mute hotkey.',
+    liveUrl: 'https://github.com/moosairfaan/moggingML',
+    accent: C.amber,
+  },
+  {
     title: 'ContextBridge',
     tech: ['Vanilla JS', 'Chrome Bookmarklet', 'HTML'],
     description:
       'A bookmarklet that captures your ChatGPT conversation, formats a handoff summary, and copies it to your clipboard so you can paste it into Claude and pick up exactly where you left off.',
     liveUrl: '/projects/contextbridge',
-    accent: C.wine,
+    accent: C.navy,
   },
   {
     title: 'Ledger — Crypto Trading Simulator',
@@ -47,31 +63,7 @@ const PROJECTS = [
     description:
       'A solo crypto research and trading simulator. Start with $10,000 in fake USD, research 9 fictional cryptocurrencies, buy and sell across a 10-minute season, and try to grow your portfolio as news events move prices — red flags like low liquidity and anonymous teams predict bigger crashes.',
     liveUrl: 'https://moosairfaan.github.io/ledger/',
-    accent: C.amber,
-  },
-  {
-    title: 'EDGAR Financial Dashboard',
-    tech: ['Python', 'FastAPI', 'SQLite', 'React', 'XBRL'],
-    description:
-      'Full-stack ETL pipeline ingesting SEC EDGAR filings, parsing XBRL financial data, served via REST API with a React dashboard.',
-    liveUrl: 'https://edgarfinancial.vercel.app',
-    accent: C.wine,
-  },
-  {
-    title: 'SizeSync — AI Clothing Size Predictor',
-    tech: ['React', 'Python', 'XGBoost', 'FastAPI', 'scikit-learn'],
-    description:
-      'Clothing fit prediction model trained on 30K+ body measurements, 99.7% accuracy across 5 brands, real-time inference API with 5.895ms latency.',
-    liveUrl: 'https://size-sync-omega.vercel.app/',
-    accent: C.amber,
-  },
-  {
-    title: 'DropAlert — Drop Notification Platform',
-    tech: ['Python', 'Playwright', 'Redis', 'PostgreSQL'],
-    description:
-      'Streetwear release tracker scraping Supreme, Nike SNKRS, StockX every 30 minutes, real-time SMS and email notifications with 99.9% uptime.',
-    liveUrl: 'https://dropalert-sigma.vercel.app',
-    accent: C.navy,
+    accent: C.concrete,
   },
 ]
 
