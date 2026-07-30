@@ -54,7 +54,7 @@ const PROJECTS = [
     tech: ['Vanilla JS', 'Chrome Bookmarklet', 'HTML'],
     description:
       'A bookmarklet that captures your ChatGPT conversation, formats a handoff summary, and copies it to your clipboard so you can paste it into Claude and pick up exactly where you left off.',
-    liveUrl: '/projects/contextbridge',
+    liveUrl: 'https://context-bridge-wine.vercel.app',
     accent: C.navy,
   },
   {
