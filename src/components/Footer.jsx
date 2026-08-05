@@ -14,6 +14,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
+      data-theme="light"
       className="mx-auto max-w-site border-t border-line px-[var(--spacing-gutter)] pb-12 pt-[var(--spacing-section)]"
     >
       <Reveal

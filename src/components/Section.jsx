@@ -1,5 +1,6 @@
 export default function Section({
   id,
+  theme = 'light',
   as: Tag = 'section',
   className = '',
   children,
@@ -8,6 +9,7 @@ export default function Section({
   return (
     <Tag
       id={id}
+      data-theme={theme}
       className={[
         'mx-auto max-w-site border-t border-line px-[var(--spacing-gutter)] py-[var(--spacing-section)]',
         className,

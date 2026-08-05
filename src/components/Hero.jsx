@@ -11,7 +11,10 @@ export default function Hero() {
       id="top"
       className="mx-auto grid min-h-dvh max-w-site grid-cols-1 border-b border-line lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]"
     >
-      <div className="flex min-h-auto flex-col justify-between gap-16 px-[var(--spacing-gutter)] pb-14 pt-[max(6.5rem,calc(env(safe-area-inset-top)+5rem))] lg:min-h-dvh lg:gap-0 lg:pb-[clamp(3rem,6vh,4.5rem)] lg:pr-10 lg:pt-[max(7rem,calc(env(safe-area-inset-top)+5.5rem))]">
+      <div
+        data-theme="light"
+        className="flex min-h-auto flex-col justify-between gap-16 px-[var(--spacing-gutter)] pb-14 pt-[max(6.5rem,calc(env(safe-area-inset-top)+5rem))] lg:min-h-dvh lg:gap-0 lg:pb-[clamp(3rem,6vh,4.5rem)] lg:pr-10 lg:pt-[max(7rem,calc(env(safe-area-inset-top)+5.5rem))]"
+      >
         <div className="max-w-[32rem]">
           <Reveal
             as="h1"
@@ -66,6 +69,7 @@ export default function Hero() {
       <Reveal
         variant="media"
         delay={0.14}
+        data-theme="dark"
         className="relative min-h-[min(70vh,540px)] overflow-hidden border-t border-line bg-ink lg:min-h-dvh lg:border-l lg:border-t-0"
       >
         <motion.img

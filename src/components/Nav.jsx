@@ -1,8 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NAV } from '../data/site'
+import useHeaderTheme from '../hooks/useHeaderTheme'
 
 export default function Nav() {
+  const headerRef = useRef(null)
+  const logoRef = useRef(null)
+  const linksRef = useRef(null)
   const [scrolled, setScrolled] = useState(false)
+  const { logoTheme, linksTheme } = useHeaderTheme({
+    headerRef,
+    logoRef,
+    linksRef,
+  })
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -11,23 +20,37 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const unifiedTheme = logoTheme === linksTheme ? logoTheme : linksTheme
+
   return (
     <nav
+      ref={headerRef}
       aria-label="Primary"
+      data-logo-theme={logoTheme}
+      data-links-theme={linksTheme}
       className={[
-        'fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between',
-        'bg-transparent px-[var(--spacing-gutter)] transition-[border-color] duration-700 ease-[var(--ease-editorial)]',
+        'site-header fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between',
+        'bg-transparent px-[var(--spacing-gutter)]',
         'min-[1440px]:px-[max(var(--spacing-gutter),calc((100vw-1400px)/2+var(--spacing-gutter)))]',
-        scrolled ? 'border-b border-line' : 'border-b border-transparent',
-      ].join(' ')}
+        `header-${unifiedTheme}`,
+        `header-logo-${logoTheme}`,
+        `header-links-${linksTheme}`,
+        scrolled ? 'is-scrolled' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <a
+        ref={logoRef}
         href="#top"
-        className="font-serif text-[1.15rem] italic leading-none tracking-[-0.02em] text-white mix-blend-difference transition-opacity duration-700 ease-[var(--ease-editorial)] hover:opacity-55"
+        className="nav-brand font-serif text-[1.15rem] italic leading-none tracking-[-0.02em]"
       >
         Moosa Irfaan
       </a>
-      <ul className="flex items-center gap-3.5 sm:gap-5 md:gap-7">
+      <ul
+        ref={linksRef}
+        className="flex items-center gap-3.5 sm:gap-5 md:gap-7"
+      >
         {NAV.map((item) => (
           <li key={item.label}>
             <a
@@ -35,7 +58,7 @@ export default function Nav() {
               {...(item.external
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
-              className="font-sans text-[0.6875rem] uppercase tracking-[0.12em] text-white mix-blend-difference transition-opacity duration-700 ease-[var(--ease-editorial)] hover:opacity-55"
+              className="nav-link font-sans text-[0.6875rem] uppercase tracking-[0.12em]"
             >
               {item.label}
             </a>
