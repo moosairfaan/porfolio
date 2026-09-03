@@ -49,6 +49,15 @@ export { PROJECTS } from './projects'
 
 export const EXPERIENCE = [
   {
+    role: 'Co-Founder & Engineer',
+    company: 'Verri Labs Inc. · New York, NY',
+    period: 'June 2026 – Present',
+    points: [
+      'Building Scout, an automated security response platform: Python/FastAPI backend, Next.js dashboard, GitHub App integration, and Claude API orchestration for automated finding triage.',
+      'Designed the system architecture end-to-end and shipped supporting infra (Vercel deployment, Resend + Supabase for waitlist/email).',
+    ],
+  },
+  {
     role: 'Software Engineer Intern',
     company: 'PeopleTime',
     period: '2025',
