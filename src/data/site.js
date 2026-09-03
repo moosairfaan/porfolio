@@ -110,6 +110,6 @@ export const EDUCATION = [
   {
     school: "St. Joseph's University",
     degree: 'B.S. Computer Science & Mathematics',
-    detail: 'GPA 3.7',
+    detail: '2022–2026',
   },
 ]
