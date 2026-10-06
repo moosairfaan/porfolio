@@ -1,7 +1,17 @@
 export const PROJECTS = [
   {
-    name: 'PosePulse',
+    name: 'vol10k',
     index: '01',
+    subtitle: 'Volatility Direction Model',
+    paragraph:
+      'Published a preregistered TF-IDF + logistic regression model that estimates whether post-filing realized volatility rises after Form 10-Ks, combining Item 1A and Item 7 text with sealed numeric features across a 20-ticker S&P 500 slice.',
+    tech: ['Python', 'scikit-learn', 'TF-IDF', 'EDGAR'],
+    href: 'https://huggingface.co/moosairfaan/vol10k-tfidf-logreg',
+    cta: 'View on Hugging Face →',
+  },
+  {
+    name: 'PosePulse',
+    index: '02',
     subtitle: 'Computer Vision Assistant',
     paragraph:
       'Built a macOS computer vision application that detects user gaze in Photo Booth and synchronizes floating UI overlays and audio playback using a real-time pose state machine.',
@@ -11,7 +21,7 @@ export const PROJECTS = [
   },
   {
     name: 'Autocutter',
-    index: '02',
+    index: '03',
     subtitle: 'AI Video Editing Pipeline',
     paragraph:
       'Built an AI-powered video editing pipeline that transcribes footage, semantically scores clips, and automatically generates editable rough cuts.',
@@ -21,7 +31,7 @@ export const PROJECTS = [
   },
   {
     name: 'EDGAR Financial Dashboard',
-    index: '03',
+    index: '04',
     subtitle: 'Data Engineering',
     paragraph:
       'Developed a real-time SEC filing pipeline with idempotent ETL ingestion, schema normalization, and cloud deployment.',
@@ -31,7 +41,7 @@ export const PROJECTS = [
   },
   {
     name: 'Appsmith',
-    index: '04',
+    index: '05',
     subtitle: 'Open Source',
     paragraph:
       'Contributed to Appsmith by debugging and fixing a GitHub Actions workflow affecting release labeling across multi-issue pull requests.',
