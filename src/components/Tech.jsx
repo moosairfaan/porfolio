@@ -5,25 +5,22 @@ import Section from './Section'
 export default function Tech() {
   return (
     <Section id="tech">
-      <Reveal
-        as="h2"
-        variant="text"
-        className="mb-[var(--spacing-section)] font-serif text-[clamp(3.5rem,9vw,6rem)] font-normal italic leading-[0.9] tracking-[-0.035em] text-ink"
-      >
-        Tech Stack
+      <Reveal className="mb-[var(--spacing-section)]">
+        <p className="cyber-label mb-3">Tech Stack</p>
+        <h2 className="m-0 font-sans text-[clamp(2.5rem,6vw,4rem)] font-semibold tracking-[-0.035em] text-ink">
+          Toolkit
+        </h2>
       </Reveal>
 
-      <div className="grid grid-cols-1 gap-14 border-t border-line pt-[clamp(2.5rem,5vw,4rem)] md:grid-cols-3 md:gap-12">
+      <div className="grid grid-cols-1 gap-6 border-t border-line pt-[clamp(2.25rem,4vw,3.5rem)] md:grid-cols-3 md:gap-5">
         {TECH.map((group) => (
-          <Reveal key={group.label}>
-            <p className="mb-6 font-sans text-[0.6875rem] uppercase tracking-[0.12em] text-muted">
-              {group.label}
-            </p>
-            <ul className="m-0 list-none space-y-3 p-0">
+          <Reveal key={group.label} className="cyber-panel p-5">
+            <p className="cyber-label mb-5">{group.label}</p>
+            <ul className="m-0 list-none space-y-2.5 p-0">
               {group.items.map((item) => (
                 <li
                   key={item}
-                  className="font-serif text-[clamp(1.25rem,2vw,1.5rem)] tracking-[-0.015em] text-ink"
+                  className="font-sans text-[clamp(1.05rem,1.6vw,1.2rem)] tracking-[-0.015em] text-ink"
                 >
                   {item}
                 </li>

@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Explore from './components/Explore'
 import About from './components/About'
 import Work from './components/Work'
 import Experience from './components/Experience'
@@ -25,11 +26,12 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <About />
+        <Explore />
         <Work />
         <Experience />
         <Tech />
         <Education />
+        <About />
       </main>
       <Footer />
     </motion.div>

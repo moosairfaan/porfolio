@@ -6,11 +6,11 @@ import Section from './Section'
 export default function Work() {
   return (
     <Section id="work">
-      <Reveal
-        as="h2"
-        className="mb-[var(--spacing-section)] font-sans text-[0.6875rem] uppercase tracking-[0.12em] text-muted"
-      >
-        Selected Work
+      <Reveal className="mb-[var(--spacing-section)]">
+        <p className="cyber-label mb-3">Selected Work</p>
+        <h2 className="m-0 font-sans text-[clamp(2.5rem,6vw,4rem)] font-semibold tracking-[-0.035em] text-ink">
+          Ship log
+        </h2>
       </Reveal>
 
       <div className="flex flex-col gap-[var(--spacing-section)]">

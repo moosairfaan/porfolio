@@ -1,6 +1,6 @@
 export default function Section({
   id,
-  theme = 'light',
+  theme = 'dark',
   as: Tag = 'section',
   className = '',
   children,
