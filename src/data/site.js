@@ -63,7 +63,7 @@ export const ABOUT = {
     {
       label: 'Beyond the stack',
       value:
-        'Add hobbies / personal notes here — tell me what to put and I’ll wire it in.',
+        'Game dev · gym · reading sci-fi, dystopian, and fantasy · posting on social media',
     },
   ],
 }
